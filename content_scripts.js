@@ -190,6 +190,20 @@ function mainJob(url){
     }
   }
 
+  // http://www.thai-language.com/
+  else if(url.match(/http[s]?:\/\/*www.thai-language.com\/*/)){
+    if(!$("#browse-table .object").length){
+      return false;
+    }
+    $("#browse-talbe .object").each(function( index ){
+      if(!$(this).attr("data")){
+        // If we "return false" here, we will accidentally break out of each() loops early. see http://api.jquery.com/each/
+        return;
+      }
+      audio_url = "http://www.thai-language.com/audio/" + $(this).attr("data");
+      insert_download_link(audio_url, $(this));
+    });
+  }
 
 
 
